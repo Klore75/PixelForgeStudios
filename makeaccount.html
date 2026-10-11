@@ -1,30 +1,35 @@
-<!DOCTYPE html>
-<html lang = "en">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+Kaleb Stancil - Intro to Web Dev - 2026
+-->
 
- <nav
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelForgeStudios</title>
+    <link rel="stylesheet" href="Pixelforge.css">
+</head>
+
+<body>
+
+    <nav
     <a href="index.html">Home</a>
     <a href="gamedetails.html">Game Details</a>
     <a href="flagshipgames.html">Flagship Games</a>
     <a href="moregames.html">More Games</a>
     <a href="locationandhours.html">Location And Hours</a>
     <a href="makeaccount.html">Make an Account</a>
-</nav>      
+</nav>     
 
-    <title>PixelForgeStudios</title>
-      <link rel="stylesheet" href="Pixelforge.css">
+    <header>
+        <h1>Pixelforge Studios</h1>
+        <p>Big worlds, Small prices, Games for everyone.</p>
+    </header>
 
-      <header>                    
-         <h1>Pixelforge Studios</h1>
-         <p>Big worlds, Small prices, Games for everyone.</p>
-      </header>
-
-
-
-<form>
-
+    <form id="customerForm">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" required>
         <br><br>
 
         <label for="address">Address:</label>
@@ -32,15 +37,15 @@
         <br><br>
 
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" required>
         <br><br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" required>
         <br><br>
 
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
         <br><br>
 
         <label for="phone">Phone Contact:</label>
@@ -59,7 +64,7 @@
             <option value="Japan">
             <option value="Germany">
             <option value="France">
-            <option value="Other">   
+            <option value="Other">
         </datalist>
 
         <br><br>
@@ -80,26 +85,56 @@
 
         <br><br>
 
-        <input type="submit" value="Create Account">
-        <input type="reset" value="Clear">
-
+        <button type="submit" id="submitButton">Create Account</button>
+        <button type="reset">Clear</button>
     </form>
 
+    <footer>
+        <p>PIXELFORGE STUDIOS<br>
+        Big worlds. Small prices.</p>
 
+        <p>Contact Us<br>
+        2450 Innovation Drive, Cherry Hill, NJ 08002<br>
+        (856) 555-0147<br>
+        contact@pixelforgestudios.com</p>
 
-     <footer>                    
-         <p>
-            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-           <p>PIXELFORGE STUDIOS
-            Big worlds. Small prices.</p>
-            
-            <p>Contact Us
-            2450 Innovation Drive, Cherry Hill, NJ 08002
-            (856) 555-0147
-            contact@pixelforgestudios.com </p>    
+        <p>© 2026 PixelForge Studios. All Rights Reserved.</p>
+    </footer>
 
-            <p>© 2026 PixelForge Studios. All Rights Reserved.</p>
-         </p>
-      </footer>
-   </body>
+    <script>
+        // Array to store customer objects
+        const customers = [];
+
+        // Get the form
+        const customerForm = document.getElementById("customerForm");
+
+        // Add an event listener for form submission
+        customerForm.addEventListener("submit", function(event) {
+            // Prevent the page from refreshing
+            event.preventDefault();
+
+            // Create a customer object using an object literal
+            const customer = {
+                id: customers.length + 1,
+                name: document.getElementById("name").value,
+                address: document.getElementById("address").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                country: document.getElementById("country").value,
+                genre: document.getElementById("genre").value
+            };
+
+            // Store the customer object in the array
+            customers.push(customer);
+
+            // Clear the console and display the customer array
+            console.clear();
+            console.log(customers);
+        });
+    </script>
+
+</body>
 </html>
+```
